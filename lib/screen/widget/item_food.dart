@@ -29,12 +29,12 @@ class ItemFood extends StatelessWidget {
                 children: [
                   Text(
                     "Pizza Margharita",
-                    style: titleStyle
+                    style: textHeader3
                   ),
                   SizedBox(height: 4),
                   Text(
                       "Tomatosauce and Guada, Cheese ketchup and maccaroni. with Tomatosauce and Guada, Cheese ketchup.",
-                      style: subTitle)
+                      style: textDefault)
                 ],
               ),
             ),

@@ -9,6 +9,7 @@ class CustomTheme {
     primaryColor: CustomColor.primary,
 
     appBarTheme: AppBarTheme(
+      titleSpacing: 0,
       iconTheme: IconThemeData(
         color: Color.fromRGBO(120, 120, 120, 1),
       ),
@@ -18,7 +19,7 @@ class CustomTheme {
         textTheme: TextTheme(
           headline6: TextStyle(
             color: CustomColor.darkBlue,
-            fontSize: 16,
+            fontSize: 15,
             fontWeight: FontWeight.w700
           )
         ),

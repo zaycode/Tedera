@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tedera/screen/widget/bottom_navigation.dart';
-import 'package:tedera/screen/widget/custom_appbar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tedera/util/color.dart';
 import 'package:tedera/util/style_constant.dart';
 
@@ -17,26 +16,53 @@ class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: "",
-        showBackButton: true,
-
-      ),
-      body: Stack(
-        children: [
-          isEmpty
-              ? empty()
-              : ListView.builder(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return ItemNotification();
-                  }),
-          CustomBottomNavigation()
-        ],
-      ),
+      appBar: AppBar(
+          leading: IconButton(
+            icon: SvgPicture.asset("assets/svg/back.svg"),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          title: Text("Notifications"),
+          automaticallyImplyLeading: false,
+          titleSpacing: 0,
+          iconTheme: IconThemeData(color: Colors.transparent),
+          actions: [
+            IconButton(
+                icon: Stack(
+                  children: [
+                    SvgPicture.asset("assets/svg/notification.svg"),
+                    Positioned(
+                      right: 0,
+                      child: Container(
+                        width: 8,
+                        height: 8,
+                        decoration: BoxDecoration(
+                            color: CustomColor.primary,
+                            borderRadius: BorderRadius.circular(8)),
+                      ),
+                    )
+                  ],
+                ),
+                onPressed: () {
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (BuildContext context) =>
+                  //             NotificationScreen())
+                  // );
+                }),
+          ]),
+      body: isEmpty
+          ? empty()
+          : ListView.builder(
+              padding: EdgeInsets.only(left: 16, right: 16, top: 8),
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return ItemNotification();
+              }),
       floatingActionButton: Padding(
-        padding: EdgeInsets.only(bottom: 50.0),
+        padding: EdgeInsets.only(bottom: 20.0),
         child: FloatingActionButton(
           backgroundColor: CustomColor.primary,
           child: Text(isEmpty ? "Show" : "Empty"),

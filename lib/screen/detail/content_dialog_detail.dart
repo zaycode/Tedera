@@ -40,12 +40,12 @@ class _ContentDialogDetailState extends State<ContentDialogDetail> {
                   children: [
                     Text(
                         "Pizza Margharita",
-                        style: titleStyle
+                        style: textHeader4
                     ),
                     SizedBox(height: 4),
                     Text(
                         "Tomatosauce and Guada, Cheese ketchup and maccaroni. with Tomatosauce and Guada, Cheese ketchup.",
-                        style: subTitle)
+                        style: textDefault)
                   ],
                 ),
               ),

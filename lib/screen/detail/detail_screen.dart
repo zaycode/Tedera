@@ -3,28 +3,30 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tedera/screen/detail/content_dialog_detail.dart';
 import 'package:tedera/screen/widget/category_widget.dart';
-import 'package:tedera/screen/widget/custom_appbar.dart';
+
 import 'package:tedera/screen/widget/item_food.dart';
 import 'package:tedera/util/color.dart';
-import 'package:tedera/util/util.dart';
+import 'package:flutter/foundation.dart';
 
 class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: AppBar(
+        
+      ),
       body: ListView(
         children: [
           Column(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: Util().isPhone()?16:0),
-                width: Util().isPhone()?double.infinity:900,
+                padding: EdgeInsets.symmetric(horizontal: !kIsWeb?16:0),
+                width: !kIsWeb?double.infinity:900,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: Util().isPhone()?176:460,
+                      height: !kIsWeb?176:460,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
                           image: DecorationImage(
@@ -250,11 +252,11 @@ class DetailScreen extends StatelessWidget {
                             ),
                           ],
                         )),
-                        !Util().isPhone()?Expanded(flex:2,child: contactPhone()):Container()
+                        !!kIsWeb?Expanded(flex:2,child: contactPhone()):Container()
                       ],
                     ),
                     SizedBox(height: 16),
-                    Util().isPhone()?contactPhone():Container(),
+                    !kIsWeb?contactPhone():Container(),
                     SizedBox(height: 16),
                     Divider(height: 1,),
                     SizedBox(height: 16),
@@ -321,7 +323,7 @@ class DetailScreen extends StatelessWidget {
       child: StaggeredGridView.countBuilder(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        crossAxisCount: Util().isPhone() ? 1 : 2,
+        crossAxisCount: !kIsWeb ? 1 : 2,
         itemCount: 12,
         itemBuilder: (BuildContext context, int index) => ItemFood(),
         staggeredTileBuilder: (int index) => StaggeredTile.fit(1),

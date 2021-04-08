@@ -1,22 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tedera/screen/home/home_screen.dart';
+import 'package:tedera/screen/home/home_web.dart';
 import 'package:tedera/screen/spalash_screen.dart';
 import 'package:tedera/util/theme_provider.dart';
-import 'package:tedera/util/util.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 void main() {
-  runApp(MyApp());
+
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.light,
       theme: CustomTheme.lightTheme,
-      home: Util().isPhone()?SplashScreen():HomeScreen(),
+      home: kIsWeb?HomeWeb():SplashScreen(),
     );
   }
 }

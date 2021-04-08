@@ -14,79 +14,74 @@ class MenuWidget extends StatelessWidget {
     );
 
 
-
   }
 
   Widget header() {
-    return ClipRRect(
-      borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
-      child: Container(
-        height: 70,
-
-        color: CustomColor.primary,
-        padding: EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 10,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-              ),
-              child: Center(
-                child: Text(
-                  "CC",
-                  style: textHeader2,
-                ),
+    return Container(
+      height: 70,
+      color: CustomColor.primary,
+      padding: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 10,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+            ),
+            child: Center(
+              child: Text(
+                "CC",
+                style: textHeader2,
               ),
             ),
-            Expanded(
-                child: Container(
-                  margin: EdgeInsets.only(left: 16),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Charlie Chapin",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontFamily: "Montserrat",
-                          fontWeight: FontWeight.w600,
-                        ),
+          ),
+          Expanded(
+              child: Container(
+                margin: EdgeInsets.only(left: 16),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Charlie Chapin",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontFamily: "Montserrat",
+                        fontWeight: FontWeight.w600,
                       ),
-                      SizedBox(height: 2),
-                      Text(
-                        "client@email.com",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 9,
-                          fontFamily: "Montserrat",
-                          fontWeight: FontWeight.w500,
-                        ),
-                      )
-                    ],
-                  ),
-                )),
-            IconButton(
-                icon: SvgPicture.asset("assets/svg/edit.svg", width: 14),
-                onPressed: () {})
-          ],
-        ),
+                    ),
+                    SizedBox(height: 2),
+                    Text(
+                      "client@email.com",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 9,
+                        fontFamily: "Montserrat",
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )
+                  ],
+                ),
+              )),
+          IconButton(
+              icon: SvgPicture.asset("assets/svg/edit.svg", width: 14),
+              onPressed: () {})
+        ],
       ),
     );
   }
 
   Widget listMenuWidget() {
     return Container(
-      padding: EdgeInsets.only(left: 32, right: 32, top: 32),
+      padding: EdgeInsets.only(left: 50,  top: 32),
       child: Column(
         children: [
           InkWell(
@@ -100,7 +95,7 @@ class MenuWidget extends StatelessWidget {
                     width: 10,
                   ),
                   SizedBox(width: 6),
-                  Text("Favorites", style: titleStyle)
+                  Text("Favorites", style: textHeader3)
                 ],
               ),
             ),
@@ -116,7 +111,7 @@ class MenuWidget extends StatelessWidget {
                   width: 10,
                 ),
                 SizedBox(width: 6),
-                Text("Addresses", style: titleStyle)
+                Text("Addresses", style: textHeader3)
               ],
             ),
           ),
@@ -130,7 +125,7 @@ class MenuWidget extends StatelessWidget {
                   width: 10,
                 ),
                 SizedBox(width: 6),
-                Text("Languages", style: titleStyle)
+                Text("Languages", style: textHeader3)
               ],
             ),
           ),
@@ -144,7 +139,7 @@ class MenuWidget extends StatelessWidget {
                   width: 10,
                 ),
                 SizedBox(width: 6),
-                Text("Help & Support", style: titleStyle)
+                Text("Help & Support", style: textHeader3)
               ],
             ),
           ),
@@ -158,7 +153,7 @@ class MenuWidget extends StatelessWidget {
                   width: 10,
                 ),
                 SizedBox(width: 6),
-                Text("Privacy Policy", style: titleStyle)
+                Text("Privacy Policy", style: textHeader3)
               ],
             ),
           ),
@@ -172,7 +167,7 @@ class MenuWidget extends StatelessWidget {
                   width: 10,
                 ),
                 SizedBox(width: 6),
-                Text("Terms and Condition", style: titleStyle)
+                Text("Terms and Condition", style: textHeader3)
               ],
             ),
           ),
@@ -186,7 +181,7 @@ class MenuWidget extends StatelessWidget {
                   width: 10,
                 ),
                 SizedBox(width: 6),
-                Text("About", style: titleStyle)
+                Text("About", style: textHeader3)
               ],
             ),
           ),
@@ -200,7 +195,7 @@ class MenuWidget extends StatelessWidget {
                   width: 10,
                 ),
                 SizedBox(width: 6),
-                Text("Log out", style: titleStyle)
+                Text("Log out", style: textHeader3)
               ],
             ),
           ),

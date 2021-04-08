@@ -7,7 +7,6 @@ class CustomColor {
   static final darkBlue= Color(0xFF222B45);
   static final gray= Color(0xFF5B5B5B);
   static final green= Color(0xFF80B63B);
-  static final icon= Color(0xFFD1D3D6);
   static final amber= Color(0xFFFF8900);
   static final yellowGold= Color(0xFFD5BE45);
   static final purple= Color(0xFF974FCF);

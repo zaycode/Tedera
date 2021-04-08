@@ -8,6 +8,7 @@ class ItemNotification extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 4),
       padding: EdgeInsets.symmetric(horizontal: 24,vertical: 10),
       decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
           color: Colors.white,
           boxShadow: [
             boxShadow
@@ -18,22 +19,11 @@ class ItemNotification extends StatelessWidget {
         children: [
           Text(
             "Your order 234889 has been accepted",
-            style: TextStyle(
-              color: Color(0xff222b45),
-              fontSize: 11,
-              fontFamily: "Montserrat",
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          SizedBox(height: 10,),
+            style: textDefault),
+          SizedBox(height: 4,),
           Text(
             "12.02.2002 - 15:22",
-            style: TextStyle(
-              color: Color(0xff5b5b5b),
-              fontSize: 9,
-              fontFamily: "Montserrat",
-              fontWeight: FontWeight.w500,
-            ),
+            style: textSmall
           ),
         ],
       ),

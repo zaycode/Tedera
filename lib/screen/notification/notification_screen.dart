@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tedera/screen/commonts/appbar_mobile.dart';
 import 'package:tedera/util/color.dart';
 import 'package:tedera/util/style_constant.dart';
 
@@ -16,43 +17,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          leading: IconButton(
-            icon: SvgPicture.asset("assets/svg/back.svg"),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-          title: Text("Notifications"),
-          automaticallyImplyLeading: false,
-          titleSpacing: 0,
-          iconTheme: IconThemeData(color: Colors.transparent),
-          actions: [
-            IconButton(
-                icon: Stack(
-                  children: [
-                    SvgPicture.asset("assets/svg/notification.svg"),
-                    Positioned(
-                      right: 0,
-                      child: Container(
-                        width: 8,
-                        height: 8,
-                        decoration: BoxDecoration(
-                            color: CustomColor.primary,
-                            borderRadius: BorderRadius.circular(8)),
-                      ),
-                    )
-                  ],
-                ),
-                onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (BuildContext context) =>
-                  //             NotificationScreen())
-                  // );
-                }),
-          ]),
+      appBar: AppBarMobile(title: "Notifications"),
       body: isEmpty
           ? empty()
           : ListView.builder(

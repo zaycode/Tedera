@@ -1,33 +1,25 @@
-import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'package:flutter/foundation.dart';
-import 'package:tedera/screen/commonts/appbar_web.dart';
-import 'package:tedera/screen/widget/summary_cart_flying.dart';
-import 'package:flutter_map/plugin_api.dart';
-import 'package:tedera/screen/widget/item_store.dart';
 import 'package:tedera/screen/restaurants_item.dart';
-
+import 'package:tedera/screen/widget/item_store.dart';
 import 'package:tedera/util/style_constant.dart';
-import 'package:tedera/util/util.dart';
 
-class LocationScreen extends StatefulWidget {
+class LocationMobile extends StatefulWidget {
   final PersistentTabController tabController;
 
-  LocationScreen({this.tabController});
+  LocationMobile({this.tabController});
 
   @override
-  _LocationScreenState createState() =>
-      _LocationScreenState(tabController: tabController);
+  _LocationMobileState createState() =>
+      _LocationMobileState(tabController: tabController);
 }
 
-class _LocationScreenState extends State<LocationScreen> {
+class _LocationMobileState extends State<LocationMobile> {
   final PersistentTabController tabController;
 
-  _LocationScreenState({this.tabController});
+  _LocationMobileState({this.tabController});
 
   @override
   Widget build(BuildContext context) {

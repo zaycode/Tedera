@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:tedera/screen/commonts/appbar_web.dart';
+import 'package:tedera/screen/home/home_widget.dart';
 import 'package:tedera/screen/restaurants_item.dart';
 import 'package:tedera/screen/widget/item_store.dart';
-import 'package:tedera/screen/widget/summary_cart_flying.dart';
 import 'package:tedera/util/style_constant.dart';
-import 'package:tedera/util/util.dart';
 class LocationWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWeb(page: "map",),
+      appBar: AppbarWeb(page: 2,),
       body: Stack(
         children: [
           Container(
@@ -57,7 +56,7 @@ class LocationWeb extends StatelessWidget {
               ],
             ),
           ),
-          SummaryCartFlying()
+          summaryCartSticky()
         ],
       ),
     );

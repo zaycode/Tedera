@@ -1,6 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tedera/util/color.dart';
-import 'package:flutter/foundation.dart';
 var boxShadow =  BoxShadow(
   color: Color(0x23626b95),
   blurRadius: 15,
@@ -32,14 +32,30 @@ var textDefault = TextStyle(
   fontSize: kIsWeb?12:11,
   fontWeight: FontWeight.w500,
 );
+var textDefaultGrey = TextStyle(
+  color: CustomColor.gray,
+  fontSize: kIsWeb?12:11,
+  fontWeight: FontWeight.w500,
+);
+var textDefaultRed = TextStyle(
+  color: CustomColor.primary,
+  fontSize: kIsWeb?12:11,
+  fontWeight: FontWeight.w500,
+);
+
 
 var textLight = TextStyle(
-  color: CustomColor.darkBlue,
+  color: Color(0xff5b5b5b),
   fontSize: kIsWeb?12:11,
   fontWeight: FontWeight.w200,
 );
 
 var textSmall = TextStyle(
+  color: CustomColor.darkBlue,
+  fontSize: kIsWeb?10:9,
+  fontWeight: FontWeight.w500,
+);
+var textSmallGray = TextStyle(
   color: CustomColor.darkBlue,
   fontSize: kIsWeb?10:9,
   fontWeight: FontWeight.w500,

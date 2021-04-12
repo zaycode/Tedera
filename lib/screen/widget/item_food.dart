@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:tedera/screen/cart/cart_widget.dart';
+import 'package:tedera/screen/widget/base_bottom_sheet.dart';
+
 import 'package:tedera/util/button.dart';
 import 'package:tedera/util/color.dart';
-
 import 'package:tedera/util/style_constant.dart';
 
 class ItemFood extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 97,
+        decoration: BoxDecoration(
+          border: Border(bottom: BorderSide(color: Color(0xfff1f1f1), width: 0.5)),
+        ),
+        padding: EdgeInsets.symmetric(vertical: 11),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
               width: 85,
@@ -27,19 +35,18 @@ class ItemFood extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Pizza Margharita",
-                    style: textHeader3
-                  ),
+                  Text("Pizza Margharita", style: textHeader3),
                   SizedBox(height: 4),
                   Text(
                       "Tomatosauce and Guada, Cheese ketchup and maccaroni. with Tomatosauce and Guada, Cheese ketchup.",
-                      style: textDefault)
+                      style: textDefaultGrey)
                 ],
               ),
             ),
             SizedBox(width: 30),
             Column(
+
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
                   "12,95 €",
@@ -53,10 +60,15 @@ class ItemFood extends StatelessWidget {
                 SizedBox(height: 4),
                 Button(
                   text: "Add",
-                  padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
-                  onPressed: null,
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  onPressed: () {
+                    showMaterialModalBottomSheet(
+                        context: context,
+                        backgroundColor: Colors.transparent,
+                        builder: (context) =>
+                            BaseBottomSheet(contentAddCartDialog(context)));
+                  },
                   fontSize: 11,
-
                 ),
               ],
             )

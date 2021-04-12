@@ -1,17 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:tedera/screen/commonts/appbar_web.dart';
-import 'package:tedera/screen/home/item_slider.dart';
+import 'package:tedera/screen/home/home_widget.dart';
+
 import 'package:tedera/screen/home/search_widget.dart';
-import 'package:tedera/screen/home/type_delivery_widget.dart';
 import 'package:tedera/screen/restaurants_item.dart';
 import 'package:tedera/screen/widget/category_widget.dart';
-import 'package:tedera/screen/widget/item_food.dart';
 import 'package:tedera/screen/widget/item_store.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:tedera/screen/widget/summary_cart_flying.dart';
 import 'package:tedera/util/style_constant.dart';
 
 class HomeWeb extends StatefulWidget {
@@ -20,21 +16,12 @@ class HomeWeb extends StatefulWidget {
 }
 
 class _HomeWebState extends State<HomeWeb> {
-  List<RestaurantItem> restaurants = [
-    RestaurantItem(favorite: true, cost: 25),
-    RestaurantItem(favorite: false, cost: 0),
-    RestaurantItem(favorite: false, cost: 20),
-    RestaurantItem(favorite: false, cost: 80),
-    RestaurantItem(favorite: true, cost: 0),
-    RestaurantItem(favorite: false, cost: 30),
-    RestaurantItem(favorite: false, cost: 50),
-    RestaurantItem(favorite: false, cost: 100),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppbarWeb(),
+        appBar: AppbarWeb(page: 0),
         body: Stack(
           children: [
             ListView(
@@ -42,11 +29,10 @@ class _HomeWebState extends State<HomeWeb> {
               children: [
                 Container(
                   height: 370,
-
                   child: CarouselSlider.builder(
                       itemCount: 3,
                       itemBuilder: (context, index, realId) {
-                        return ItemSlider();
+                        return itemSlider(context);
                       },
                       options: CarouselOptions(
                         autoPlay: true,
@@ -71,9 +57,7 @@ class _HomeWebState extends State<HomeWeb> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SearchWidget(),
-                                TypeDeliveryWidget()
-
-
+                                filterWidget()
                           ]),
                           SizedBox(height: 17),
                           StaggeredGridView.countBuilder(
@@ -103,7 +87,7 @@ class _HomeWebState extends State<HomeWeb> {
                 )
               ],
             ),
-            SummaryCartFlying()
+            summaryCartSticky()
           ],
         ));
   }

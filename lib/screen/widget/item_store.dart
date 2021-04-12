@@ -1,12 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tedera/screen/detail/detail_screen.dart';
-import 'package:tedera/screen/listing_model.dart';
+import 'package:tedera/screen/detail/detail.dart';
+import 'package:tedera/screen/detail/detail_mobile.dart';
+import 'package:tedera/screen/restaurants_item.dart';
 import 'package:tedera/util/color.dart';
 import 'package:tedera/util/style_constant.dart';
-import 'package:tedera/util/util.dart';
-import 'package:tedera/screen/restaurants_item.dart';
 
 class ItemStore extends StatefulWidget {
   final RestaurantItem item;
@@ -18,12 +17,12 @@ class ItemStore extends StatefulWidget {
 
 class _ItemStoreState extends State<ItemStore> {
 
-
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (BuildContext context) => Detail()));
 
       },
       child: Container(

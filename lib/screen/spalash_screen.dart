@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:tedera/screen/navigation.dart';
 import 'package:tedera/util/color.dart';
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tedera/screen/language/item_language.dart';
-import 'package:tedera/util/button.dart';
 import 'package:tedera/util/color.dart';
 
 class LanguageScreen extends StatelessWidget {

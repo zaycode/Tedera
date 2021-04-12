@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tedera/screen/home/home.dart';
 import 'package:tedera/screen/home/home_web.dart';
+import 'package:tedera/screen/location/location.dart';
+import 'package:tedera/screen/order/order.dart';
+import 'package:tedera/screen/widget/menu.dart';
 import 'package:tedera/screen/location/location_web.dart';
-import 'package:tedera/screen/notification/notification_screen.dart';
-import 'package:tedera/util/color.dart';
-import 'package:tedera/util/color.dart';
-import 'package:tedera/util/style_constant.dart';
-import 'package:tedera/util/util.dart';
-import 'package:tedera/util/popup_menu.dart';
-import 'package:tedera/screen/home/menu.dart';
-import 'package:tedera/screen/location/location_screen.dart';
 import 'package:tedera/screen/notification/item_notification.dart';
-import 'package:tedera/screen/notification/notification_screen.dart';
+import 'package:tedera/util/color.dart';
+import 'package:tedera/util/popup_menu.dart';
+import 'package:tedera/util/style_constant.dart';
 
 class AppbarWeb extends StatefulWidget implements PreferredSizeWidget {
-  final String page;
+  final int page;
   AppbarWeb({this.page});
   @override
   _AppbarWebState createState() => _AppbarWebState();
@@ -48,28 +46,34 @@ class _AppbarWebState extends State<AppbarWeb> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         IconButton(
-                            icon: SvgPicture.asset("assets/svg/home.svg",color: widget.page==null || widget.page=="home"? CustomColor.primary:CustomColor.silver,),
+                            icon: SvgPicture.asset("assets/svg/home.svg",color: widget.page==0? CustomColor.primary:CustomColor.silver,),
                             onPressed: () {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          HomeWeb()));
+                                          Home()));
                             }),
                         SizedBox(width:14 ),
                         IconButton(
-                            icon: SvgPicture.asset("assets/svg/location.svg",color: widget.page=="map"? CustomColor.primary:CustomColor.silver),
+                            icon: SvgPicture.asset("assets/svg/location.svg",color: widget.page==1? CustomColor.primary:CustomColor.silver),
                             onPressed: () {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          LocationWeb()));
+                                          Location()));
                             }),
                         SizedBox(width:14 ),
                         IconButton(
-                            icon: SvgPicture.asset("assets/svg/store.svg"),
-                            onPressed: () {}),
+                            icon: SvgPicture.asset("assets/svg/store.svg",color: widget.page==2? CustomColor.primary:CustomColor.silver),
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          Order()));
+                            }),
                         SizedBox(width:14 ),
                         IconButton(
                             icon: SvgPicture.asset("assets/svg/chat.svg"),

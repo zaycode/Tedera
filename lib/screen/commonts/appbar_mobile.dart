@@ -4,14 +4,21 @@ import 'package:tedera/screen/notification/notification_screen.dart';
 import 'package:tedera/util/color.dart';
 
 class AppBarMobile extends StatelessWidget implements PreferredSizeWidget {
+  final String title;
+
+  AppBarMobile({this.title});
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        title:SvgPicture.asset("assets/svg/logo.svg",height: 18,),
-        titleSpacing: 16,
+        leading: IconButton(
+          icon: SvgPicture.asset("assets/svg/back.svg"),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(title),
         automaticallyImplyLeading: false,
         iconTheme: IconThemeData(color: Colors.transparent),
-        actions:  [
+        actions: [
           IconButton(
               icon: Stack(
                 children: [
@@ -30,12 +37,14 @@ class AppBarMobile extends StatelessWidget implements PreferredSizeWidget {
               ),
               onPressed: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (BuildContext context) => NotificationScreen()));
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            NotificationScreen()));
               }),
-        ]
-    );
+        ]);
   }
 
   @override
-  Size get preferredSize =>  Size.fromHeight(48.0);
+  Size get preferredSize => Size.fromHeight(50.0);
 }

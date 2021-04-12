@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tedera/screen/home/menu.dart';
+import 'package:tedera/screen/widget/menu.dart';
 import 'package:tedera/screen/notification/notification_screen.dart';
 import 'package:tedera/util/color.dart';
 class Profile extends StatelessWidget {

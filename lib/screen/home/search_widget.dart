@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tedera/util/color.dart';
 import 'package:tedera/util/style_constant.dart';
-import 'package:tedera/util/util.dart';
 
 class SearchWidget extends StatelessWidget {
   @override

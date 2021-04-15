@@ -13,27 +13,36 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: CustomColor.primary,
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset("assets/svg/logo-white.svg"),
-            SizedBox(height: 8),
-            Text(
-              "Local one food system",
-              style: TextStyle(color: Colors.white, fontSize: 12),
-            )
-          ],
+        child: Container(
+          width: 150,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset("assets/svg/logo-white.svg",width: 150,),
+              SizedBox(height: 8),
+              Container(
+                margin: EdgeInsets.only(left: 10),
+                width: double.infinity,
+                child: Center(
+                  child: Text(
+                    "Local one food system",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 12,),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
   init(context) async {
-    await Future.delayed(Duration(seconds: 2));
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(
-            builder: (BuildContext context) => Navigation()
-            ));
+    // await Future.delayed(Duration(seconds: 2));
+    // Navigator.pushReplacement(
+    //     context, MaterialPageRoute(
+    //         builder: (BuildContext context) => Navigation()
+    //         ));
 
   }
 }

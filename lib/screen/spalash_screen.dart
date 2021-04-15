@@ -13,26 +13,23 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: CustomColor.primary,
       body: Center(
-        child: Container(
-          width: 150,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset("assets/svg/logo-white.svg",width: 150,),
-              SizedBox(height: 8),
-              Container(
-                margin: EdgeInsets.only(left: 10),
-                width: double.infinity,
-                child: Center(
-                  child: Text(
-                    "Local one food system",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white, fontSize: 12,),
-                  ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset("assets/svg/logo-white.svg",width: 150,),
+            SizedBox(height: 8),
+            Container(
+              margin: EdgeInsets.only(left: 10),
+              width: double.infinity,
+              child: Center(
+                child: Text(
+                  "Local one food system",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white, fontSize: 12,),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

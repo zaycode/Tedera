@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:tedera/screen/cart/cart_mobile.dart';
-import 'package:tedera/screen/chat_mobile.dart';
+import 'package:tedera/screen/chat/chat.dart';
+import 'package:tedera/screen/chat/chat_mobile.dart';
 import 'package:tedera/screen/home/home.dart';
 import 'package:tedera/screen/home/home_mobile.dart';
 import 'package:tedera/screen/location/location.dart';
@@ -75,7 +76,7 @@ class _NavigationState extends State<Navigation> {
       Home(tabController: _controller),
       Location(tabController: _controller),
       Order(tabController: _controller),
-      ChatMobile(tabController: _controller),
+      Chat(tabController: _controller),
       Profile()
     ];
   }

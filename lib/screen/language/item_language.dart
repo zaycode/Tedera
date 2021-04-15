@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tedera/util/color.dart';
 import 'package:tedera/util/style_constant.dart';
@@ -11,8 +12,9 @@ class ItemLanguage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 46,
-      margin: EdgeInsets.only(bottom: 4),
+      margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
         color: Colors.white,
         boxShadow: [
           boxShadow

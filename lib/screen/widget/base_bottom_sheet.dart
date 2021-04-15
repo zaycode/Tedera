@@ -4,9 +4,10 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:tedera/screen/home/home_widget.dart';
 
 class BaseBottomSheet extends StatelessWidget {
-  final Widget widget;
+  final Widget child;
+  final bool isCartShow;
 
-  BaseBottomSheet(this.widget);
+  BaseBottomSheet({this.child,this.isCartShow=true});
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +42,9 @@ class BaseBottomSheet extends StatelessWidget {
                         ),
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 16),
-                          child: widget,
+                          child: child,
                         ),
-                        kIsWeb?summaryCartSticky():Container()
+                        kIsWeb&&isCartShow?summaryCartSticky():Container()
                       ],
                     )),
               ),

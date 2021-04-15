@@ -118,6 +118,6 @@ class _HomeMobileState extends State<HomeMobile> {
               ),
             ),
           ],
-        ));--
+        ));
   }
 }

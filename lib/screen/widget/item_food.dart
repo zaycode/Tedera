@@ -66,7 +66,7 @@ class ItemFood extends StatelessWidget {
                         context: context,
                         backgroundColor: Colors.transparent,
                         builder: (context) =>
-                            BaseBottomSheet(contentAddCartDialog(context)));
+                            BaseBottomSheet(child:contentAddCartDialog(context)));
                   },
                   fontSize: 11,
                 ),

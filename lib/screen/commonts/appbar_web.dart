@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tedera/screen/chat/chat.dart';
 import 'package:tedera/screen/home/home.dart';
 import 'package:tedera/screen/home/home_web.dart';
 import 'package:tedera/screen/location/location.dart';
@@ -48,7 +49,7 @@ class _AppbarWebState extends State<AppbarWeb> {
                         IconButton(
                             icon: SvgPicture.asset("assets/svg/home.svg",color: widget.page==0? CustomColor.primary:CustomColor.silver,),
                             onPressed: () {
-                              Navigator.pushReplacement(
+                              Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
@@ -58,7 +59,7 @@ class _AppbarWebState extends State<AppbarWeb> {
                         IconButton(
                             icon: SvgPicture.asset("assets/svg/location.svg",color: widget.page==1? CustomColor.primary:CustomColor.silver),
                             onPressed: () {
-                              Navigator.pushReplacement(
+                              Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
@@ -68,7 +69,7 @@ class _AppbarWebState extends State<AppbarWeb> {
                         IconButton(
                             icon: SvgPicture.asset("assets/svg/store.svg",color: widget.page==2? CustomColor.primary:CustomColor.silver),
                             onPressed: () {
-                              Navigator.pushReplacement(
+                              Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
@@ -77,7 +78,13 @@ class _AppbarWebState extends State<AppbarWeb> {
                         SizedBox(width:14 ),
                         IconButton(
                             icon: SvgPicture.asset("assets/svg/chat.svg"),
-                            onPressed: () {}),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          Chat()));
+                            }),
                         SizedBox(width:14 ),
                         CustomPopupMenu(
                           arrowColor: Colors.white,

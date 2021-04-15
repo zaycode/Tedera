@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tedera/screen/address/address.dart';
+import 'package:tedera/screen/auth/edit_profile.dart';
+import 'package:tedera/screen/auth/login.dart';
+import 'package:tedera/screen/auth/register.dart';
+import 'package:tedera/screen/favorites/favorite.dart';
+import 'package:tedera/screen/language/language_screen.dart';
+import 'package:tedera/screen/webview/web_view_screen.dart';
 import 'package:tedera/util/color.dart';
 import 'package:tedera/util/style_constant.dart';
 
@@ -7,16 +14,11 @@ class MenuWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        header(),
-        listMenuWidget()
-      ],
+      children: [header(context), listMenuWidget(context)],
     );
-
-
   }
 
-  Widget header() {
+  Widget header(BuildContext context) {
     return Container(
       height: 70,
       color: CustomColor.primary,
@@ -43,45 +45,50 @@ class MenuWidget extends StatelessWidget {
           ),
           Expanded(
               child: Container(
-                margin: EdgeInsets.only(left: 16),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Charlie Chapin",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    SizedBox(height: 2),
-                    Text(
-                      "client@email.com",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 9,
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.w500,
-                      ),
-                    )
-                  ],
+            margin: EdgeInsets.only(left: 16),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Charlie Chapin",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontFamily: "Montserrat",
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              )),
+                SizedBox(height: 2),
+                Text(
+                  "client@email.com",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 9,
+                    fontFamily: "Montserrat",
+                    fontWeight: FontWeight.w500,
+                  ),
+                )
+              ],
+            ),
+          )),
           IconButton(
               icon: SvgPicture.asset("assets/svg/edit.svg", width: 14),
-              onPressed: () {})
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => EditProfile()));
+              })
         ],
       ),
     );
   }
 
-  Widget listMenuWidget() {
+  Widget listMenuWidget(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 50,  top: 32),
+      padding: EdgeInsets.only(left: 50, top: 32),
       child: Column(
         children: [
           InkWell(
@@ -99,90 +106,151 @@ class MenuWidget extends StatelessWidget {
                 ],
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => Favorite()));
+            },
           ),
-          Container(
-            margin: EdgeInsets.only(bottom: 35),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  "assets/svg/address.svg",
-                  width: 10,
-                ),
-                SizedBox(width: 6),
-                Text("Addresses", style: textHeader3)
-              ],
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => Address()));
+            },
+            child: Container(
+              margin: EdgeInsets.only(bottom: 35),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    "assets/svg/address.svg",
+                    width: 10,
+                  ),
+                  SizedBox(width: 6),
+                  Text("Addresses", style: textHeader3)
+                ],
+              ),
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(bottom: 35),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  "assets/svg/language.svg",
-                  width: 10,
-                ),
-                SizedBox(width: 6),
-                Text("Languages", style: textHeader3)
-              ],
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => LanguageScreen()));
+            },
+            child: Container(
+              margin: EdgeInsets.only(bottom: 35),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    "assets/svg/language.svg",
+                    width: 10,
+                  ),
+                  SizedBox(width: 6),
+                  Text("Languages", style: textHeader3)
+                ],
+              ),
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(bottom: 35),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  "assets/svg/phone.svg",
-                  width: 10,
-                ),
-                SizedBox(width: 6),
-                Text("Help & Support", style: textHeader3)
-              ],
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => WebViewScreen(
+                            title: "Help & Support",
+                          )));
+            },
+            child: Container(
+              margin: EdgeInsets.only(bottom: 35),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    "assets/svg/phone.svg",
+                    width: 10,
+                  ),
+                  SizedBox(width: 6),
+                  Text("Help & Support", style: textHeader3)
+                ],
+              ),
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(bottom: 35),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  "assets/svg/privacy.svg",
-                  width: 10,
-                ),
-                SizedBox(width: 6),
-                Text("Privacy Policy", style: textHeader3)
-              ],
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => WebViewScreen(
+                            title: "Privacy Policy",
+                          )));
+            },
+            child: Container(
+              margin: EdgeInsets.only(bottom: 35),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    "assets/svg/privacy.svg",
+                    width: 10,
+                  ),
+                  SizedBox(width: 6),
+                  Text("Privacy Policy", style: textHeader3)
+                ],
+              ),
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(bottom: 35),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  "assets/svg/term.svg",
-                  width: 10,
-                ),
-                SizedBox(width: 6),
-                Text("Terms and Condition", style: textHeader3)
-              ],
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => WebViewScreen(
+                            title: "Term & Condition",
+                          )));
+            },
+            child: Container(
+              margin: EdgeInsets.only(bottom: 35),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    "assets/svg/term.svg",
+                    width: 10,
+                  ),
+                  SizedBox(width: 6),
+                  Text("Terms and Condition", style: textHeader3)
+                ],
+              ),
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(bottom: 35),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  "assets/svg/about.svg",
-                  width: 10,
-                ),
-                SizedBox(width: 6),
-                Text("About", style: textHeader3)
-              ],
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => WebViewScreen(
+                        title: "About Tedera",
+                      )));
+            },
+            child: Container(
+              margin: EdgeInsets.only(bottom: 35),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    "assets/svg/about.svg",
+                    width: 10,
+                  ),
+                  SizedBox(width: 6),
+                  Text("About", style: textHeader3)
+                ],
+              ),
             ),
           ),
           Container(
@@ -197,6 +265,40 @@ class MenuWidget extends StatelessWidget {
                 SizedBox(width: 6),
                 Text("Log out", style: textHeader3)
               ],
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => Login()));
+            },
+            child: Container(
+              margin: EdgeInsets.only(bottom: 35),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("Login", style: textHeader3)
+                ],
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => Register()));
+            },
+            child: Container(
+              margin: EdgeInsets.only(bottom: 35),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("Register", style: textHeader3)
+                ],
+              ),
             ),
           ),
         ],

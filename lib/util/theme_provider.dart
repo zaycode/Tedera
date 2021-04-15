@@ -26,5 +26,6 @@ class CustomTheme {
     iconTheme: IconThemeData(
       color: Color.fromRGBO(120, 120, 120, 1),
     ),
+
   );
 }

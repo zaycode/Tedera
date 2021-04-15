@@ -666,7 +666,7 @@ Widget ratingWidgetDialog(BuildContext context) {
                       context: context,
                       backgroundColor: Colors.transparent,
                       builder: (context) =>
-                          BaseBottomSheet(ratingWidgetDialogSuccess(context)));
+                          BaseBottomSheet(child:ratingWidgetDialogSuccess(context)));
                 },
               ),
             )
@@ -733,7 +733,7 @@ Widget reviewWidget(BuildContext context) {
         showMaterialModalBottomSheet(
             context: context,
             backgroundColor: Colors.transparent,
-            builder: (context) => BaseBottomSheet(ratingWidgetDialog(context)));
+            builder: (context) => BaseBottomSheet(child:ratingWidgetDialog(context)));
       },
       child: Container(
         width: 149,

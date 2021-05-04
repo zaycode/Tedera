@@ -35,11 +35,11 @@ class SplashScreen extends StatelessWidget {
     );
   }
   init(context) async {
-    // await Future.delayed(Duration(seconds: 2));
-    // Navigator.pushReplacement(
-    //     context, MaterialPageRoute(
-    //         builder: (BuildContext context) => Navigation()
-    //         ));
+    await Future.delayed(Duration(seconds: 2));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(
+            builder: (BuildContext context) => Navigation()
+            ));
 
   }
 }

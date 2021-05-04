@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tedera/screen/detail/detail.dart';
+import 'package:tedera/screen/rating/rating_screen.dart';
 import 'package:tedera/util/color.dart';
 import 'package:tedera/util/style_constant.dart';
 
@@ -17,7 +19,7 @@ Widget bannerDetail() {
   );
 }
 
-Widget titleDetailWidget() {
+Widget titleDetailWidget(BuildContext context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -25,26 +27,32 @@ Widget titleDetailWidget() {
         "SOGO Pizza Hut",
         style: textHeader1,
       ),
-      Row(
-        children: [
-          SvgPicture.asset(
-            "assets/svg/star.svg",
-            width: kIsWeb?12.5:10,
-          ),
-          SizedBox(width: 4),
-          Text(
-            "4.7",
-            style: TextStyle(
-                color: CustomColor.darkBlue,
-                fontSize: kIsWeb ? 13 : 12,
-                height: 1.2,
-                fontWeight: FontWeight.w600),
-          ),
-          SizedBox(width: 4),
-          Text("(1256 Reviews)",
-              style:
-                  TextStyle(fontSize: kIsWeb ? 11 : 9, color: CustomColor.gray))
-        ],
+      InkWell(
+        onTap: (){
+          Navigator.push(
+              context, MaterialPageRoute(builder: (BuildContext context) => RatingScreen()));
+        },
+        child: Row(
+          children: [
+            SvgPicture.asset(
+              "assets/svg/star.svg",
+              width: kIsWeb?12.5:10,
+            ),
+            SizedBox(width: 4),
+            Text(
+              "4.7",
+              style: TextStyle(
+                  color: CustomColor.darkBlue,
+                  fontSize: kIsWeb ? 13 : 12,
+                  height: 1.2,
+                  fontWeight: FontWeight.w600),
+            ),
+            SizedBox(width: 4),
+            Text("(1256 Reviews)",
+                style:
+                    TextStyle(fontSize: kIsWeb ? 11 : 9, color: CustomColor.gray))
+          ],
+        ),
       )
     ],
   );

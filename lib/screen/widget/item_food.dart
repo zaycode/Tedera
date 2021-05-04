@@ -8,18 +8,19 @@ import 'package:tedera/util/color.dart';
 import 'package:tedera/util/style_constant.dart';
 
 class ItemFood extends StatelessWidget {
+  int index;
+  ItemFood({this.index});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(color: Color(0xfff1f1f1), width: 0.5)),
-        ),
         padding: EdgeInsets.symmetric(vertical: 11),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
+
+            index!=2?Container(
               width: 85,
               height: 85,
               margin: EdgeInsets.only(right: 12),
@@ -28,7 +29,7 @@ class ItemFood extends StatelessWidget {
                   image: DecorationImage(
                       image: AssetImage("assets/images/thumbnail.jpg"),
                       fit: BoxFit.cover)),
-            ),
+            ):Container(),
             Flexible(
               flex: 1,
               child: Column(
@@ -65,8 +66,7 @@ class ItemFood extends StatelessWidget {
                     showMaterialModalBottomSheet(
                         context: context,
                         backgroundColor: Colors.transparent,
-                        builder: (context) =>
-                            BaseBottomSheet(child:contentAddCartDialog(context)));
+                        builder: (context) => BaseBottomSheet(child:contentAddCartDialog(context)));
                   },
                   fontSize: 11,
                 ),

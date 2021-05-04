@@ -1,12 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:tedera/screen/address/address_widget.dart';
 import 'package:tedera/screen/commonts/appbar_mobile.dart';
 import 'package:tedera/screen/home/home_widget.dart';
 import 'package:tedera/screen/home/search_widget.dart';
 import 'package:tedera/screen/notification/notification_screen.dart';
 import 'package:tedera/screen/restaurants_item.dart';
+import 'package:tedera/screen/widget/base_bottom_sheet.dart';
 import 'package:tedera/screen/widget/category_widget.dart';
 import 'package:tedera/screen/widget/item_store.dart';
 import 'package:tedera/util/color.dart';
@@ -36,41 +39,95 @@ class _HomeMobileState extends State<HomeMobile> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50.0),
-          child: AppBar(
-              title: SvgPicture.asset(
-                "assets/svg/logo.svg",
-                height: 18,
-              ),
-              titleSpacing: 16,
-              automaticallyImplyLeading: false,
-              iconTheme: IconThemeData(color: Colors.transparent),
-              actions: [
-                IconButton(
-                    icon: Stack(
-                      children: [
-                        SvgPicture.asset("assets/svg/notification.svg"),
-                        Positioned(
-                          right: 0,
-                          child: Container(
-                            width: 8,
-                            height: 8,
-                            decoration: BoxDecoration(
-                                color: CustomColor.primary,
-                                borderRadius: BorderRadius.circular(8)),
+            preferredSize: const Size(double.infinity, kToolbarHeight),
+            child: Container(
+              padding: EdgeInsets.only(
+                  left: 16, top: MediaQuery.of(context).padding.top),
+              height: kToolbarHeight + MediaQuery.of(context).padding.top,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SvgPicture.asset(
+                    "assets/svg/logo.svg",
+                    height: 18,
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 4),
+                        child: SvgPicture.asset(
+                          "assets/svg/location.svg",
+                          height: 12,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          showMaterialModalBottomSheet(
+                              context: context,
+                              backgroundColor: Colors.transparent,
+                              builder: (context) => BaseBottomSheet(
+                                  isCartShow: true,
+                                  marginTop: 0,
+                                  child: Container(
+                                      child: Column(
+                                    children: [
+                                      Container(
+                                        padding: EdgeInsets.symmetric(vertical: 16),
+                                          child: Text(
+                                            "Select your default Address",
+                                            style: textDefault,
+                                          )),
+                                      addressWidget(context),
+                                SizedBox(height: 24)
+                                    ],
+                                  ))));
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(right: 4),
+                          child: Text(
+                            "Office - New York",
+                            style: TextStyle(
+                              color: Color(0xff5b5b5b),
+                              fontSize: 11,
+                              fontFamily: "Montserrat",
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
-                        )
-                      ],
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  NotificationScreen()));
-                    }),
-              ]),
-        ),
+                        ),
+                      ),
+                      SvgPicture.asset(
+                        "assets/svg/arrow_down.svg",
+                        width: 9,
+                      ),
+                    ],
+                  ),
+                  IconButton(
+                      icon: Stack(
+                        children: [
+                          SvgPicture.asset("assets/svg/notification.svg"),
+                          Positioned(
+                            right: 0,
+                            child: Container(
+                              width: 8,
+                              height: 8,
+                              decoration: BoxDecoration(
+                                  color: CustomColor.primary,
+                                  borderRadius: BorderRadius.circular(8)),
+                            ),
+                          )
+                        ],
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    NotificationScreen()));
+                      }),
+                ],
+              ),
+            )),
         body: ListView(
           padding: EdgeInsets.only(bottom: 92),
           children: [

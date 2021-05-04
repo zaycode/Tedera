@@ -8,10 +8,8 @@ import 'package:tedera/screen/home/home_web.dart';
 import 'package:tedera/screen/spalash_screen.dart';
 import 'package:tedera/util/theme_provider.dart';
 void main() {
-
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((value) => runApp(MyApp()));
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((value) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {

@@ -38,7 +38,6 @@ Widget itemOrder(context, String status) {
           MaterialPageRoute(builder: (BuildContext context) => OrderDetail()));
     },
     child: Container(
-      height: 74,
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
@@ -53,7 +52,6 @@ Widget itemOrder(context, String status) {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: 50,
@@ -67,7 +65,7 @@ Widget itemOrder(context, String status) {
           SizedBox(width: 10),
           Expanded(
               child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
@@ -79,35 +77,46 @@ Widget itemOrder(context, String status) {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(height: 4),
-              Text(
-                "12.02.2022",
-                style: TextStyle(
-                  color: Color(0xff5b5b5b),
-                  fontSize: 9,
-                  fontFamily: "Montserrat",
-                  fontWeight: FontWeight.w500,
-                ),
+              SizedBox(height: 10),
+              Row(
+
+                children: [
+                  Text(
+                    "12.02.2022",
+                    style: TextStyle(
+                      color: Color(0xff5b5b5b),
+                      fontSize: 11,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Text(
+                    " - Delivery",
+                    style: TextStyle(
+                      color: Color(0xff222b45),
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  )
+                ],
               ),
             ],
           )),
           SizedBox(width: 10),
           Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
                 "12,95 €",
                 textAlign: TextAlign.right,
                 style: TextStyle(
-                  color: Color(0xffec5050),
+                  color: status!="Canceled"?CustomColor.primary:CustomColor.silver,
                   fontSize: 13,
-                  fontFamily: "Montserrat",
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(width: 2),
+              SizedBox(height: 10),
               Text(
-                status,
+                status.toUpperCase(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: status == "Placed"
@@ -116,7 +125,6 @@ Widget itemOrder(context, String status) {
                           ? CustomColor.green
                           : CustomColor.silver,
                   fontSize: 11,
-                  fontFamily: "Montserrat",
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -134,16 +142,50 @@ Widget orderDetailInfoWidget() {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Container(
-        margin: EdgeInsets.only(bottom: 8),
-        child: Text("Order ID: 2BS9FD2", style: textHeader3),
-      ),
-      Container(
-        margin: EdgeInsets.only(bottom: 20),
-        child: Text(
-          "12.02.2022 • 11:35",
-          style: textSmall,
+        margin: EdgeInsets.only(bottom: 21),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Kichi Coffee & Drink", style: textHeader3),
+                Container(
+                  margin: EdgeInsets.only(top: 7),
+                  child:  Row(
+
+                    children: [
+                      Text(
+                        "12.02.2022",
+                        style: TextStyle(
+                          color: Color(0xff5b5b5b),
+                          fontSize: 11,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      Text(
+                        " - Delivery",
+                        style: TextStyle(
+                          color: Color(0xff222b45),
+                          fontSize: 11,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                Text("Order ID: 2BS9FD2", style: textHeader3),
+              ],
+            ),
+          ],
         ),
       ),
+
       Container(
         margin: EdgeInsets.only(bottom: 8),
         child: Row(
@@ -525,8 +567,7 @@ Widget ratingWidgetDialog(BuildContext context) {
             ),
             SizedBox(height: 7),
             Text("How would you rate this restaurant?",
-                textAlign: TextAlign.center,
-                style: textDefaultGrey),
+                textAlign: TextAlign.center, style: textDefaultGrey),
             SizedBox(height: 7),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -600,8 +641,7 @@ Widget ratingWidgetDialog(BuildContext context) {
             ),
             SizedBox(height: 7),
             Text("How would you rate this restaurant?",
-                textAlign: TextAlign.center,
-                style: textDefaultGrey),
+                textAlign: TextAlign.center, style: textDefaultGrey),
             SizedBox(height: 7),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -665,8 +705,8 @@ Widget ratingWidgetDialog(BuildContext context) {
                   showMaterialModalBottomSheet(
                       context: context,
                       backgroundColor: Colors.transparent,
-                      builder: (context) =>
-                          BaseBottomSheet(child:ratingWidgetDialogSuccess(context)));
+                      builder: (context) => BaseBottomSheet(
+                          child: ratingWidgetDialogSuccess(context)));
                 },
               ),
             )
@@ -733,7 +773,8 @@ Widget reviewWidget(BuildContext context) {
         showMaterialModalBottomSheet(
             context: context,
             backgroundColor: Colors.transparent,
-            builder: (context) => BaseBottomSheet(child:ratingWidgetDialog(context)));
+            builder: (context) =>
+                BaseBottomSheet(child: ratingWidgetDialog(context)));
       },
       child: Container(
         width: 149,

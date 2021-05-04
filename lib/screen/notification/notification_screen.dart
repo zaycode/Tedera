@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tedera/screen/commonts/appbar_mobile.dart';
+import 'package:tedera/screen/notification/item_notification.dart';
 import 'package:tedera/util/color.dart';
 import 'package:tedera/util/style_constant.dart';
 
-import 'item_notification.dart';
 
 class NotificationScreen extends StatefulWidget {
   @override
@@ -24,7 +24,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
               padding: EdgeInsets.only(left: 16, right: 16, top: 8),
               itemCount: 5,
               itemBuilder: (context, index) {
-                return ItemNotification();
+                return ItemNotification(index);
               }),
       floatingActionButton: Padding(
         padding: EdgeInsets.only(bottom: 20.0),
@@ -47,4 +47,5 @@ class _NotificationScreenState extends State<NotificationScreen> {
           textAlign: TextAlign.center, style: textDefault),
     );
   }
+
 }

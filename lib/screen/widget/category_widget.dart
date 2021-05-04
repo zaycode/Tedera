@@ -9,6 +9,7 @@ class CategoryWidget extends StatefulWidget {
 
 class _CategoryWidgetState extends State<CategoryWidget> {
   var activeCategoryWidget = "All";
+
   List<String> categories = [
     "All",
     "Coffe",

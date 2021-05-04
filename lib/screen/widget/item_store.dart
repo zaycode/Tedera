@@ -9,6 +9,7 @@ import 'package:tedera/util/style_constant.dart';
 
 class ItemStore extends StatefulWidget {
   final RestaurantItem item;
+
   ItemStore({this.item});
 
   @override
@@ -16,24 +17,22 @@ class ItemStore extends StatefulWidget {
 }
 
 class _ItemStoreState extends State<ItemStore> {
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (BuildContext context) => Detail()));
-
+        Navigator.push(context,
+            MaterialPageRoute(builder: (BuildContext context) => Detail()));
       },
       child: Container(
-        height: kIsWeb? 120 : 96,
+        height: kIsWeb ? 120 : 96,
         padding: EdgeInsets.all(5),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: kIsWeb ? 109:87,
-              height: kIsWeb ? 109:87,
+              width: kIsWeb ? 109 : 87,
+              height: kIsWeb ? 109 : 87,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   image: DecorationImage(
@@ -67,26 +66,33 @@ class _ItemStoreState extends State<ItemStore> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
+                          Container(
+                            child: Image.asset("assets/images/store.png",
+                                width: 22, height: 22),
+                            margin: EdgeInsets.only(right: 10),
+                          ),
                           SvgPicture.asset(
                             "assets/svg/star.svg",
-                            width: kIsWeb?12.5:10,
+                            width: kIsWeb ? 12.5 : 10,
                           ),
                           SizedBox(width: 4),
                           Text(
                             "4.7",
                             style: TextStyle(
                               color: Color(0xff5b5b5b),
-                              fontSize: kIsWeb?13:12,
+                              fontSize: kIsWeb ? 13 : 12,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                           SizedBox(width: 4),
-                          Text("(1256 Reviews)",
+                          Text(
+                            "(1256 Reviews)",
                             style: TextStyle(
                               color: Color(0xff5b5b5b),
-                              fontSize: kIsWeb?11:9,
+                              fontSize: kIsWeb ? 11 : 9,
                               fontWeight: FontWeight.w500,
-                            ),)
+                            ),
+                          )
                         ],
                       ),
                       Row(
@@ -104,10 +110,8 @@ class _ItemStoreState extends State<ItemStore> {
                           SvgPicture.asset("assets/svg/location.svg",
                               width: 10, color: CustomColor.darkBlue),
                           SizedBox(width: 5),
-                          Text("0.4 Km",
-                              style: textSmall),
+                          Text("0.4 Km", style: textSmall),
                           SizedBox(width: 8),
-
                           SvgPicture.asset("assets/svg/wallet.svg",
                               width: 10, color: CustomColor.darkBlue),
                           SizedBox(width: 5),
@@ -116,23 +120,30 @@ class _ItemStoreState extends State<ItemStore> {
                           SvgPicture.asset("assets/svg/car.svg",
                               width: 10, color: CustomColor.darkBlue),
                           SizedBox(width: 5),
-                          Text(widget.item.cost==0?"FREE":"${widget.item.cost}€",
-                              style:textSmall),
+                          Text(
+                              widget.item.cost == 0
+                                  ? "FREE"
+                                  : "${widget.item.cost}€",
+                              style: textSmall),
                         ],
                       )
                     ],
                   ),
                 )),
             InkWell(
-
-                child:Container(
-                  padding: EdgeInsets.all(5),
-                  child: SvgPicture.asset(!widget.item.favorite?"assets/svg/favorite.svg":"assets/svg/favorite_solid.svg",width: 18,),
+              child: Container(
+                padding: EdgeInsets.all(5),
+                child: SvgPicture.asset(
+                  !widget.item.favorite
+                      ? "assets/svg/favorite.svg"
+                      : "assets/svg/favorite_solid.svg",
+                  width: 18,
                 ),
-              onTap: (){
-                  setState(() {
-                    widget.item.favorite=!widget.item.favorite;
-                  });
+              ),
+              onTap: () {
+                setState(() {
+                  widget.item.favorite = !widget.item.favorite;
+                });
               },
             )
           ],

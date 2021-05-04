@@ -6,9 +6,8 @@ import 'package:tedera/screen/home/home_widget.dart';
 class BaseBottomSheet extends StatelessWidget {
   final Widget child;
   final bool isCartShow;
-
-  BaseBottomSheet({this.child,this.isCartShow=true});
-
+  final double marginTop;
+  BaseBottomSheet({this.child,this.isCartShow=true,this.marginTop=16});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -26,25 +25,36 @@ class BaseBottomSheet extends StatelessWidget {
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: SingleChildScrollView(
                     controller: ModalScrollController.of(context),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                    child: Stack(
+
                       children: [
-                        IconButton(
-                          icon: Icon(
-                            Icons.close,
-                            color: Colors.black,
-                            size: 16,
+                        Positioned(
+                          right: 0,
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.close,
+                              color: Colors.black,
+                              size: 16,
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
                           ),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
                         ),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 16),
-                          child: child,
+                          margin: EdgeInsets.only(top:marginTop),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 16),
+                                child: child,
+                              ),
+                              kIsWeb&&isCartShow?summaryCartSticky():Container()
+                            ],
+                          ),
                         ),
-                        kIsWeb&&isCartShow?summaryCartSticky():Container()
                       ],
                     )),
               ),

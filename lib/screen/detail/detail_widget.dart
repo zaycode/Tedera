@@ -23,9 +23,19 @@ Widget titleDetailWidget(BuildContext context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      Text(
-        "SOGO Pizza Hut",
-        style: textHeader1,
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            child: Image.asset("assets/images/store.png",
+                width: 22, height: 22),
+            margin: EdgeInsets.only(right: 10),
+          ),
+          Text(
+            "SOGO Pizza Hut",
+            style: textHeader1,
+          ),
+        ],
       ),
       InkWell(
         onTap: (){
@@ -277,7 +287,7 @@ Widget contactPhone() {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SvgPicture.asset("assets/svg/chat.svg",color: CustomColor.darkBlue,),
+              Image.asset("assets/images/chat_blue.png",color: CustomColor.darkBlue,),
               SizedBox(width: 31),
               SvgPicture.asset("assets/svg/phone.svg",color: CustomColor.darkBlue),
               SizedBox(width: 31),

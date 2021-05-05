@@ -11,7 +11,7 @@ Widget bannerDetail() {
     aspectRatio: 9 / 4,
     child: Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
               image: AssetImage("assets/images/thumbnail.jpg"),
               fit: BoxFit.cover)),
